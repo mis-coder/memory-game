@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <title>Memory Game</title>
+  </head>
+  <body>
+    <h1 class="page-title">Match the cards</h1>
+    <div class="overlay-text visible">Click anywhere to Start!</div>
+    <div id="end-game-modal" class="end-game-modal">
+      Game Over / You won
+      <button class="replay-btn" id="replay-btn">Replay</button>
+    </div>
+    <div class="game-container">
+      <div class="game-info-container">
+        <div class="game-info">Timer: <span id="timer">100</span></div>
+        <div class="game-info">Score: <span id="score">0</span></div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/shiba.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/shiba.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/cow.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/cow.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/cat.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/cat.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/donkey.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/donkey.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/tiger.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/tiger.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/monkey.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/monkey.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/panda-bear.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/panda-bear.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/rubber-duck.png" alt="card-front" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img src="assets/img/card_back.jpg" alt="card-back" />
+        </div>
+        <div class="card-front card-face">
+          <img src="assets/img/rubber-duck.png" alt="card-front" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
