@@ -61,10 +61,11 @@ body {
   backface-visibility: hidden;
   transition: transform 500ms ease-in-out;
   border-radius: inherit;
-}
-
-.card-face:hover {
-  transform: scale(1.05);
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 .card-face img {
@@ -119,10 +120,14 @@ body {
   justify-content: center;
   height: 100%;
   width: 100%;
-  z-index: 999;
+  z-index: 9;
   background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
   font-size: 2.5rem;
+}
+
+.overlay-text {
+  cursor: pointer;
 }
 
 .end-game-modal.visible {
@@ -136,25 +141,24 @@ body {
   font-family: "Kaushan Script", cursive;
   cursor: pointer;
   color: #fff;
-  margin-top: 3rem;
+  margin-top: 2rem;
   background-color: transparent;
   position: relative;
-}
-
-.replay-btn span {
-  position: relative;
-  z-index: 999;
-  padding: 0;
 }
 
 .replay-btn::before {
   position: absolute;
   content: "";
   top: 0;
-  left: 0;
+  left: -0.2rem;
   height: 100%;
   width: 0%;
   background-color: #fff;
+}
+
+.replay-btn span {
+  position: relative;
+  z-index: 999;
 }
 
 .replay-btn:hover {
@@ -162,7 +166,7 @@ body {
 }
 
 .replay-btn:hover::before {
-  width: 100%;
+  width: 103%;
   transition: width 0.3s linear;
 }
 
