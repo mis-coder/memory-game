@@ -5,12 +5,13 @@
 }
 
 html {
-  min-height: 100vh;
   font-family: "Kaushan Script", cursive;
 }
 
 body {
   background-color: #f0cb9f;
+  height: 100vh;
+  width: 100%;
 }
 
 .page-title {
@@ -30,7 +31,7 @@ body {
 }
 
 .game-info-container {
-  grid-column: 1 / span 4;
+  grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
 }
@@ -46,6 +47,7 @@ body {
   height: 9rem;
   width: 7rem;
   border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .card-face {
@@ -59,6 +61,10 @@ body {
   backface-visibility: hidden;
   transition: transform 500ms ease-in-out;
   border-radius: inherit;
+}
+
+.card-face:hover {
+  transform: scale(1.05);
 }
 
 .card-face img {
@@ -97,9 +103,67 @@ body {
     transform: scale(0.9);
   }
 }
+
 .overlay-text,
 .end-game-modal {
   display: none;
+}
+
+.overlay-text.visible,
+.end-game-modal.visible {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+.end-game-modal.visible {
+  flex-direction: column;
+}
+
+.replay-btn {
+  border: 0.2rem solid #fff;
+  padding: 0.6rem 2rem;
+  font-size: 1.5rem;
+  font-family: "Kaushan Script", cursive;
+  cursor: pointer;
+  color: #fff;
+  margin-top: 3rem;
+  background-color: transparent;
+  position: relative;
+}
+
+.replay-btn span {
+  position: relative;
+  z-index: 999;
+  padding: 0;
+}
+
+.replay-btn::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #fff;
+}
+
+.replay-btn:hover {
+  color: #000;
+}
+
+.replay-btn:hover::before {
+  width: 100%;
+  transition: width 0.3s linear;
 }
 
 @media (max-width: 600px) {
