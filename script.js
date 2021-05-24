@@ -1,9 +1,13 @@
 const overlay = document.querySelector(".overlay-text");
 const timer = document.querySelector("#timer")
+const score = document.querySelector("#score")
 const endGameModal = document.querySelector(".end-game-modal")
 const replayBtn = document.querySelector('.replay-btn')
 const cards = document.querySelectorAll(".card")
 const cardDeck = document.querySelector('.game-container')
+
+let visibleCards = [];
+let scores = 0;
 
 //this function is called after loading of the page
 const ready = () =>{
@@ -19,7 +23,11 @@ const startGame = (totalTime) => {
         timer.innerText = totalTime
         if(totalTime === 0){
             clearInterval(timerId);
-            gameOver()
+            gameLost()
+        }
+        else if(totalTime > 0 && (scores === cards.length / 2)){
+            clearInterval(timerId);
+            gameWon();
         }
 }, 1000)
 }
@@ -30,9 +38,49 @@ const playFlipSound = () =>{
     audio.play()
 }
 
+//function to play matched sound
+const playMatchSound = () =>{
+    const audio = new Audio('assets/sounds/match.wav');
+    audio.play()
+}
+
 //to flip the card
 const flipCard = (item) => {
-   item.classList.add('visible')
+   item.classList.add('visible');
+}
+
+//to check matched or unmatched
+const matchedOrUnmatched = (item)=>{
+   visibleCards.push(item);
+   let len = visibleCards.length;
+   if(len === 2){
+       if(visibleCards[0].querySelector('.card-front img').src === visibleCards[1].querySelector('.card-front img').src){
+           cardsMatched();
+       }
+       else{
+           cardsUnmatched();
+       }
+   }
+}
+
+//when the two cards are matched
+const cardsMatched = ()=>{
+    visibleCards[0].classList.add('matched');
+    visibleCards[1].classList.add('matched');
+    visibleCards = [];
+    setTimeout(() => { 
+        playMatchSound();    
+        countScores();
+    }, 500);
+}
+
+//when the two cards are not matched
+const cardsUnmatched = () =>{
+    setTimeout(()=>{
+        visibleCards[0].classList.remove('visible');
+        visibleCards[1].classList.remove('visible');
+        visibleCards = [];
+    }, 500);
 }
 
 // Fisher-Yates (aka Knuth) Shuffle
@@ -44,12 +92,22 @@ const shuffleArray = (arr) => {
     return arr;
 }
 
-//when the game ends
-const gameOver = ()=>{
+//to count the scores
+const countScores = () =>{
+    scores++;
+    score.innerText = scores;
+}
+
+//when the game is lost
+const gameLost= ()=>{
 endGameModal.classList.add('visible');
 }
 
-ready();
+//when the game is won
+const gameWon = ()=>{
+   endGameModal.querySelector('p').innerText = 'You Won'
+   endGameModal.classList.add('visible');
+}
 
 
 /*--------------- EVENT LISTENERS ---------------------------*/
@@ -67,6 +125,13 @@ cards.forEach((card) => {
     card.addEventListener('click',() =>{
         playFlipSound();
         flipCard(card);
+        matchedOrUnmatched(card);
     })
 })
 
+//first make sure if the content on DOM is loaded
+if (document.readyState == 'loading') {
+    document.addEventListener('DOMContentLoaded', ready);
+} else {
+    ready();
+}
