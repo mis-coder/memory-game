@@ -3,12 +3,13 @@ const timer = document.querySelector("#timer")
 const endGameModal = document.querySelector(".end-game-modal")
 const replayBtn = document.querySelector('.replay-btn')
 const cards = document.querySelectorAll(".card")
+const cardDeck = document.querySelector('.game-container')
 
 //this function is called after loading of the page
 const ready = () =>{
     overlay.classList.add('visible');
     const shuffledCards = shuffleArray( Array.from(cards) );
-    console.log(shuffledCards)
+    shuffledCards.forEach(card => cardDeck.appendChild(card) )
 }
 
 //for starting the game 
